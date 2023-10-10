@@ -1,0 +1,40 @@
+import defaultTheme from "tailwindcss/defaultTheme";
+import forms from "@tailwindcss/forms";
+
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: [
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+        "./storage/framework/views/*.php",
+        "./resources/views/**/*.blade.php",
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js"
+    ],
+
+    theme: {
+        extend: {
+            colors: {
+               primaryColor: '#313866',
+            //    primaryColor: '#2b0b24',
+               secondaryColor: '#504099',
+               actionColor:{
+                100:'#FE7BE5',
+                200:'#974EC3',
+                300:'#6d388c'
+               },
+               paleViolet: '#353863',
+               darkBlue:'#202141'
+            },
+            
+            fontFamily: {
+                
+               'main':['IBM Plex Sans', 'sans-serif'],
+               'content':['Newsreader', 'serif']
+            },
+        },
+    },
+
+    plugins: [forms, require("flowbite/plugin")],
+};
