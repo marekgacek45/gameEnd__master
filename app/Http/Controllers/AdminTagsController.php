@@ -3,33 +3,62 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminTagsController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
 
         $tags = Tag::all();
-       
-               return view('admin.tag.index',['tags'=>$tags,]);
-           }
+        $categories = Category::all();
 
-           public function store()
-           {
-       
-               $attributes = request()->validate([
-                   'name' => 'required',
-                   'category_id' => ['required'],
-                  
-               ]);
-       
+        return view('admin.tag.index', ['tags' => $tags, 'categories' => $categories]);
+    }
+
+    public function store()
+    {
+
+        $attributes = request()->validate([
+            'name' => 'required',
+            'category_id' => ['required'],
+
+        ]);
+
+
+
+        $tag = Tag::create($attributes);
+
+
+        return redirect(route('admin.tag.index'))->with('success', 'Post został dodany');
+    }
+
+    public function update(Tag $tag){
+
+        // dd(request());
+                $attributes = request()->validate([
+                    'name' => 'required',
+                    'category_id' => 'required',
+                    
+                ]);
+                
+        
+                $tag->update($attributes);
+        
+        
+                return redirect(route('admin.tag.index'))->with('success', 'Kategoria została zaktualizowana');
+        
+            }
+            public function destroy(Tag $tag)
+            {
+                
+                
+            
                
-       
-               $tag = Tag::create($attributes);
-       
-               $tag->tags()->attach(request()->input('tags'));
-       
-               return redirect(route('admin.tag.index'))->with('success', 'Post został dodany');
-}
+                $tag->delete();
+            
+                return back()->with('success', 'Tag została usunięta, a tagi mają teraz kategorię NULL');
+            }
 }
