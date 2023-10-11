@@ -54,7 +54,7 @@
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-actionColor-200 transition-all group">
+            <a href="{{route('admin.tag.index')}}" class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-actionColor-200 transition-all group">
              <i class="uil uil-tag text-actionColor-100 group-hover:text-white text-3xl"></i>
                <span class="flex-1 ml-3 whitespace-nowrap">Tagi</span>
             </a>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminTagsController;
 use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminVideoController;
 use App\Http\Controllers\AdminCategoryController;
@@ -69,3 +70,7 @@ Route::delete('/admin/video/{video:slug}', [AdminVideoController::class, 'destro
 
 Route::get('/admin/kategorie', [AdminCategoryController::class, 'index'])->name('admin.category.index');
 Route::post('/admin/kategorie/dodaj', [AdminCategoryController::class, 'store'])->name('admin.category.store');
+Route::delete('/admin/kategorie/{category:id}', [AdminCategoryController::class, 'destroy'])->name('admin.category.destroy');
+
+
+Route::get('/admin/tagi', [AdminTagsController::class, 'index'])->name('admin.tag.index');

@@ -15,21 +15,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($tags as $tag)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $category->name }}
+                                {{ $tag->name }}
                             
                             </th>
 
-                            <td class="px-6 py-4">
-                                <form action="{{route('admin.category.destroy',$category->id)}}" method="Post">
-@csrf
-@method('DELETE')
-                                    <button type="submit" class="border px-8 py-4">{{$category->id}}</button>
-                                </form>
-                            </td>
+                           
          
                         <tr>
                     @endforeach

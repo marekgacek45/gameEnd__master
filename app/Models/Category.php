@@ -20,7 +20,11 @@ class Category extends Model
      
         return $this->belongsToMany(Video::class);
             }
-            public function tag() {
+        //     public function tag() {
+        
+        // return $this->belongsToMany(Tag::class);
+        //     }
+            public function tags() {
         
         return $this->belongsToMany(Tag::class);
             }
