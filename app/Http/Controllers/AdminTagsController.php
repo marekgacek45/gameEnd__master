@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminTagsController extends Controller
@@ -11,8 +12,9 @@ class AdminTagsController extends Controller
 
 
         $tags = Tag::all();
+        $categories = Category::all();
        
-               return view('admin.tag.index',['tags'=>$tags,]);
+               return view('admin.tag.index',['tags'=>$tags,'categories'=>$categories]);
            }
 
            public function store()
@@ -28,7 +30,6 @@ class AdminTagsController extends Controller
        
                $tag = Tag::create($attributes);
        
-               $tag->tags()->attach(request()->input('tags'));
        
                return redirect(route('admin.tag.index'))->with('success', 'Post został dodany');
 }

@@ -70,7 +70,9 @@ Route::delete('/admin/video/{video:slug}', [AdminVideoController::class, 'destro
 
 Route::get('/admin/kategorie', [AdminCategoryController::class, 'index'])->name('admin.category.index');
 Route::post('/admin/kategorie/dodaj', [AdminCategoryController::class, 'store'])->name('admin.category.store');
+Route::patch('/admin/kategorie/{category:id}', [AdminCategoryController::class, 'update'])->name('admin.category.update');
 Route::delete('/admin/kategorie/{category:id}', [AdminCategoryController::class, 'destroy'])->name('admin.category.destroy');
 
 
 Route::get('/admin/tagi', [AdminTagsController::class, 'index'])->name('admin.tag.index');
+Route::post('/admin/tagi/stwórz', [AdminTagsController::class, 'store'])->name('admin.tag.store');

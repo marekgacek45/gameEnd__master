@@ -22,21 +22,37 @@ class AdminCategoryController extends Controller
             'name' => 'required',
         ]);
 
-        $category = Category::create($attributes);
+       Category::create($attributes);
 
         return redirect(route('admin.category.index'))->with('success', 'Kategoria została utworzona');
     }
+
+    public function update(Category $category){
+
+// dd(request());
+        $attributes = request()->validate([
+            'name' => 'required',
+            
+        ]);
+        
+
+        $category->update($attributes);
+
+
+        return redirect(route('admin.category.index'))->with('success', 'Kategoria została zaktualizowana');
+
+    }
     public function destroy(Category $category)
     {
-        // Znajdź wszystkie tagi przypisane do usuwanej kategorii
+        
         $tags = $category->tags;
     
-        // Iteruj przez znalezione tagi i ustaw kategorię na null
+      
         foreach ($tags as $tag) {
             $tag->update(['category_id' => null]);
         }
     
-        // Teraz możesz bezpiecznie usunąć kategorię
+       
         $category->delete();
     
         return back()->with('success', 'Kategoria została usunięta, a tagi mają teraz kategorię NULL');

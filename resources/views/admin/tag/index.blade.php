@@ -64,15 +64,20 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-6 space-y-6">
-                    <form action="{{ route('admin.category.store') }}" method="post" id="addCategory">
+                    <form action="{{ route('admin.tag.store') }}" method="post" id="addTag">
                         @csrf
                         <x-form.input name="name" namePl="Nazwa Kategori" class=" w-full xl:w-3/4 "
                             placeholder="Wprowadź tytuł" />
+                            <x-form.select name="category_id" namePl="kategoria">
+                                @foreach ($categories as $category)
+                                    <option class="text-lg " value="{{ $category->id }}">{{ucwords($category->name)}}</option>
+                                @endforeach
+                            </x-form.select>    
                     </form>
                 </div>
                 <!-- Modal footer -->
                 <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                    <button form="addCategory" data-modal-hide="medium-modal" type="submit"
+                    <button form="addTag" data-modal-hide="medium-modal" type="submit"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Dodaj</button>
                     <button data-modal-hide="medium-modal" type="button"
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Anuluj</button>
