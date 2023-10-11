@@ -27,14 +27,18 @@ class AdminCategoryController extends Controller
         return redirect(route('admin.category.index'))->with('success', 'Kategoria została utworzona');
     }
     public function destroy(Category $category)
-{
-
-
-    $category->tags()->delete();
-
-    $category->delete();
-
-    return back()->with('success', 'Kategoria została usunięta');
-
-}
+    {
+        // Znajdź wszystkie tagi przypisane do usuwanej kategorii
+        $tags = $category->tags;
+    
+        // Iteruj przez znalezione tagi i ustaw kategorię na null
+        foreach ($tags as $tag) {
+            $tag->update(['category_id' => null]);
+        }
+    
+        // Teraz możesz bezpiecznie usunąć kategorię
+        $category->delete();
+    
+        return back()->with('success', 'Kategoria została usunięta, a tagi mają teraz kategorię NULL');
+    }
 }
