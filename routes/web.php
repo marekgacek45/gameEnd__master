@@ -49,7 +49,7 @@ Route::get('posty/{post:slug}',[PagesController::class,'post'])->name('post.show
 
 
 
-Route::get('/admin', [AdminPostsController::class, 'index'])->name('admin.index');
+Route::get('/admin', [AdminPostsController::class, 'index'])->name('admin.index')->middleware('admin');
 Route::get('/admin/nowyPost', [AdminPostsController::class, 'create'])->name('admin.create');
 Route::post('/admin/nowyPost', [AdminPostsController::class, 'store'])->name('store');
 Route::get('/{post:slug}', [AdminPostsController::class, 'show'])->name('admin.show');
