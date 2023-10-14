@@ -1,13 +1,13 @@
-const hamburgerBtn = document.querySelector('.hamburger')
-const navDropdown = document.querySelector('#navbar-dropdown')
+const hamburgerBtn = document.querySelector('.hamburger');
+const navDropdown = document.querySelector('#navbar-dropdown');
 
-
-
-const navHandler = () => {
+if (hamburgerBtn) {
+  const navHandler = () => {
     console.log('ok');
-    hamburgerBtn.classList.toggle('is-active')
-    navDropdown.classList.toggle('nav-active')
-    navDropdown.classList.toggle('hidden')
-}
+    hamburgerBtn.classList.toggle('is-active');
+    navDropdown.classList.toggle('nav-active');
+    navDropdown.classList.toggle('hidden');
+  }
 
-hamburgerBtn.addEventListener('click',navHandler)
+  hamburgerBtn.addEventListener('click', navHandler);
+}
