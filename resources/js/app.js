@@ -1,4 +1,5 @@
 import './bootstrap';
+import './hamburger';
 import 'flowbite';
 
 import Alpine from 'alpinejs';

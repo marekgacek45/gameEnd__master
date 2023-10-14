@@ -5,14 +5,14 @@ $categories = Category::all();
 ?>
 
 
-
+{{--CATEGORIES--}}
 <ul
-class="flex flex-col items-center p-4 md:p-0 mt-4 gap-5 md:gap-0 font-medium rounded-lg bg-secondaryColor md:bg-primaryColor md:flex-row md:space-x-12 md:mt-0  font-sans-serif ">
+class="flex flex-col md:flex-row items-center p-4 md:p-0 mt-4 md:mt-0 gap-5 md:gap-0 md:space-x-12 font-medium rounded-md   ">
 @foreach ($categories as $category)
     <li>
         <div class="relative">
             <button data-dropdown-toggle="dropdown{{ $category->id }}" data-dropdown-trigger="hover"
-                class="text-white font-medium rounded-lg text-lg text-center inline-flex items-center hover:text-actionColor-100 transition-all"
+                class="text-white font-medium rounded-md text-lg text-center inline-flex items-center transition-colors hover:text-actionColor-300"
                 type="button">
                 {{-- <a href="{{route('posts.category.index',$category->name)}}">{{ ucwords($category->name )}}</a> --}}
                 <a href="#">{{ ucwords($category->name )}}</a>
@@ -21,23 +21,21 @@ class="flex flex-col items-center p-4 md:p-0 mt-4 gap-5 md:gap-0 font-medium rou
                     fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" d="m1 1 4 4 4-4" />
-                    
                 </svg>
                 @endif
             </button>
             
-            
+            {{--TAGS--}}
             @if (Tag::where('category_id', $category->id)->exists())
             <div id="dropdown{{ $category->id }}"
-                class="z-10 hidden bg-actionColor-200 rounded-lg shadow w-44 absolute ">
-                
-                <ul class="py-2 text-md text-white"
+                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-md shadow w-44 0 font-sans-serif">
+                <ul class="py-2 text-sm text-gray-700 "
                     aria-labelledby="dropdown{{ $category->id }}">
                     @foreach (Tag::where('category_id', $category->id)->get() as $tag)
-                        <li>
+                        <li class="block px-4 py-2 hover:bg-gray-100">
                             {{-- <a href="{{route('posts.tag.index',$tag->name)}}" --}}
                             <a href="#"
-                                class="block px-4 py-2 hover:bg-actionColor-300 transition-colors">
+                                class="block px-4 py-2 hover:bg-gray-100 hover:text-actionColor-300 transition-all">
                                 {{ucwords( $tag->name) }}
                             </a>
                         </li>
