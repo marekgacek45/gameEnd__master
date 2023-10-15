@@ -4,6 +4,7 @@
         <div class="flex flex-col justify-center items-center">
              {{--LOGO HEADING--}}
            <x-logoHeading/>
+           <span class="text-sm text-white">"Moje motto to Coco Jamboo i do przodu"</span>
             {{--LOGO HEADING--}}
           <x-social/>
         </div>
