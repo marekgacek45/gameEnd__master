@@ -2,7 +2,7 @@
   @section('title', 'Gameend')
 
   <header class="mt-24 max-w-screen-2xl mx-auto ">
-    <div id="headerSlider"
+    {{-- <div id="headerSlider"
         class="flex bg-center min-h-[50vh]  pt-32 bg-gray-600 bg-blend-multiply bg-cover bg-no-repeat bg-[url('https://ocs-pl.oktawave.com/v1/AUTH_2887234e-384a-4873-8bc5-405211db13a2/spidersweb/2022/02/elden-ring-recenzja.jpg')] rounded-md">
     
         <div class="self-end px-4 pb-28 mx-auto max-w-screen-xl text-center d">
@@ -15,7 +15,8 @@
                 
             </div>
         </div>
-    </div>
+    </div> --}}
+    <x-slider/>
 </header>
   <main>
 

@@ -17,7 +17,7 @@
                 class="self-center text-3xl font-semibold whitespace-nowrap text-actionColor-100">Gameend</span>
           </a>
         </div>
-       <x-avatarDropdown/>
+       <x-nav.avatarDropdown/>
       </div>
     </div>
   </nav>

@@ -1,7 +1,10 @@
 const currentYearSpan = document.querySelector('#currentYearSpan')
 
-const date = new Date()
+if(currentYearSpan)
+{
+    const date = new Date()
+    const currentYear = date.getFullYear()
 
-const currentYear = date.getFullYear()
+    currentYearSpan.innerHTML= currentYear
+}
 
-currentYearSpan.innerHTML= currentYear
