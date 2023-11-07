@@ -1,27 +1,33 @@
-<div class="slider">
-    <div class="slides">
-        <input type="radio" name="radio-btn" id="radio1" checked>
-        <input type="radio" name="radio-btn" id="radio2">
-        <input type="radio" name="radio-btn" id="radio3">
-        
-        <div class="slide first">
-            <img src="{{asset('assets\images\slider\slider-1.avif')}}" alt="">
-        </div>
-        <div class="slide ">
-            <img src="{{asset('assets\images\slider\slider-2.avif')}}" alt="">
-        </div>
-        <div class="slide">
-            <img src="{{asset('assets\images\slider\slider-3.avif')}}" alt="">
-        </div>
+
+<div class="slider__container">
+
+    <div class="slider__slide fade">
+      {{-- <div class="numbertext">1 / 3</div> --}}
+      <a href="#"><img class="slider__slide-img" src="{{asset('assets\images\slider\slider-1.avif')}}" ></a>
+      {{-- <button class="text">Caption Text</button> --}}
     </div>
-    <div class="navigation-auto">
-        <div class="auto-btn1"></div>
-        <div class="auto-btn2"></div>
-        <div class="auto-btn3"></div>
+  
+    <div class="slider__slide fade">
+      {{-- <div class="numbertext">2 / 3</div> --}}
+      <a href="#"><img class="slider__slide-img" src="{{asset('assets\images\slider\slider-2.avif')}}" ></a>
+      {{-- <div class="text">Caption Two</div> --}}
     </div>
-    <div class="navigation-manual">
-        <label for="radio1" class="manual-btn" checked></label>
-        <label for="radio2" class="manual-btn"></label>
-        <label for="radio3" class="manual-btn"></label>
+  
+    <div class="slider__slide fade">
+      {{-- <div class="numbertext">3 / 3</div> --}}
+      <a href="#"><img class="slider__slide-img" src="{{asset('assets\images\slider\slider-3.avif')}}" ></a>
+      {{-- <div class="text">Caption Three</div> --}}
     </div>
-</div>
+  
+    
+    <a class="slider__btn slider__btn--prev" >&#10094;</a>
+    <a class="slider__btn slider__btn--next" >&#10095;</a>
+
+    <div class="slider__dots-container">
+        <span class="slider__dots-item"></span>
+        <span class="slider__dots-item"></span>
+        <span class="slider__dots-item"></span>
+      </div>
+  </div>
+  
+  
