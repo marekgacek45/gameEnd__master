@@ -45,6 +45,8 @@ require __DIR__.'/auth.php';
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/posty', [PagesController::class, 'posts'])->name('posts');
 Route::get('posty/{post:slug}',[PagesController::class,'post'])->name('post.show');
+Route::get('kategoria/{category:name}',[PagesController::class,'category'])->name('posts.category.index');
+Route::get('tag/{tag:name}',[PagesController::class,'tag'])->name('posts.tag.index');
 
 
 

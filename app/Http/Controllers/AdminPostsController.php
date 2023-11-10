@@ -31,13 +31,14 @@ class AdminPostsController extends Controller
     }
     public function store()
     {
-
+        
         $attributes = request()->validate([
             'title' => 'required',
             'category_id' => ['required'],
             'thumbnail' => ['required', 'image'],
             'content' => ['required']
         ]);
+
 
         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails', 'public');
         $attributes['slug'] = Str::slug(request()->title);
