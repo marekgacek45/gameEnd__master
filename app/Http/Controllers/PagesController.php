@@ -41,15 +41,20 @@ class PagesController extends Controller
         return (view('pages.post', ['post' => $post]));
     }
 
-    public function category(Category $category){
+    public function category(Category $category)
+    {
         $posts = Post::with('category')->where('category_id', $category->id)->get();
+        $newestPost = $posts->first();
+        $latestPosts = $posts->skip(1)->take(3)->all();
 
-        return view('pages.postsList', ['posts' => $posts,]);
+        return view('pages.posts', ['posts' => $posts, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
     }
-    public function tag(Tag $tag){
+    public function tag(Tag $tag)
+    {
         $posts = Post::with('tags')->where('tag_id', $tag->id)->get();
 
-
-        return view('pages.postsList', ['posts' => $posts,]);
+        $newestPost = $posts->first();
+        $latestPosts = $posts->skip(1)->take(3)->all();
+        return view('pages.posts', ['posts' => $posts, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
     }
 }
