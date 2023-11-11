@@ -1,21 +1,21 @@
 @props(['posts'])
 
-<div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
-    <table class="w-full border-collapse bg-paleViolet text-left text-sm text-white">
-        <thead class="bg-paleViolet">
+<div class="overflow-hidden rounded-md border border-gray-200 shadow-md max-w-screen-xl mx-auto">
+    <table class="w-full border-collapse bg-primaryColor-400 text-left text-sm text-white">
+        <thead class="bg-white">
             <tr>
-                <th scope="col" class="px-6 py-4 font-bold text-white">Tytuł</th>
-                <th scope="col" class="px-6 py-4 font-bold text-white">Publikacja</th>
-                <th scope="col" class="px-6 py-4 font-bold text-white">Kategoria</th>
-                <th scope="col" class="px-6 py-4 font-bold text-white">Tagi</th>
-                <th scope="col" class="px-6 py-4 font-bold text-white"></th>
+                <th scope="col" class="px-6 py-4 font-bold text-black">Nazwa Posta</th>
+                <th scope="col" class="px-6 py-4 font-bold text-black">Publikacja</th>
+                <th scope="col" class="px-6 py-4 font-bold text-black">Kategoria</th>
+                <th scope="col" class="px-6 py-4 font-bold text-black">Tagi</th>
+                <th scope="col" class="px-6 py-4 font-bold text-black">Edycja</th>
             </tr>
         </thead>
-        <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+        <tbody class="divide-y divide-gray-100 border-t border-gray-100 ">
 
 
             @foreach ($posts as $post)
-                <tr class="hover:bg-actionColor-200">
+                <tr class="hover:bg-primaryColor-200 transition-all">
                     <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                         <div class="flex flex-row justify-center items-center gap-3">
                             <a href="">
@@ -26,14 +26,12 @@
 
                                 </div>
                                 <div class="text-sm">
-                                    <a href="{{route('admin.show',$post->slug)}}"><div class="font-semibold text-white">{{ $post->title }}</div></a>
-                                    {{-- <a href="#"><div class="font-semibold text-white">{{ $post->title }}</div></a> --}}
+                                    <a href="{{route('admin.show',$post->slug)}}" target="_blank"><div class="font-semibold text-white">{{ $post->title }}</div></a>
                                  
                             </a>
                         </div>
 </div>
 </th>
-<!--Tutaj musze dodać do tabeli published/not published i zaktualizowac-->
 <td class="px-6 py-4">
    <span>{{$post->created_at->diffForHumans()}}</span>
 </td>
@@ -105,4 +103,28 @@
 
 </tbody>
 </table>
+
+</div>
+
+
+    {{ $posts->links() }}
+
+
+<div class="absolute bottom-5 right-5 ">
+
+    <a href="{{route('admin.video.create')}}"><button type="button"
+            class="text-white bg-actionColor-300 hover:bg-actionColor-400 focus:ring-4 focus:outline-none focus:ring-white rounded-full  px-2 py-1 text-center inline-flex items-centertransition-colors">
+            
+            <i class="uil uil uil-video text-2xl "aria-hidden="true"></i>
+            <span class="sr-only">Dodaj wideo</span>
+        </button>
+    </a>
+
+    <a href="{{route('admin.create')}}" class="ml-2"><button type="button"
+            class="text-white bg-actionColor-300 hover:bg-actionColor-400 focus:ring-4 focus:outline-none focus:ring-white rounded-full  px-2 py-1 text-center inline-flex items-centertransition-colors">
+            
+            <i class="uil uil-plus text-2xl "aria-hidden="true"></i>
+            <span class="sr-only">Dodaj post</span>
+        </button>
+    </a>
 </div>
