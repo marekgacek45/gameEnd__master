@@ -113,17 +113,17 @@
 <div class="absolute bottom-5 right-5 ">
 
     <a href="{{route('admin.video.create')}}"><button type="button"
-            class="text-white bg-actionColor-300 hover:bg-actionColor-400 focus:ring-4 focus:outline-none focus:ring-white rounded-full  p-2.5 text-center inline-flex items-centertransition-colors">
+            class="text-white bg-actionColor-300 hover:bg-actionColor-400 focus:ring-4 focus:outline-none focus:ring-white rounded-full  px-2 py-1 text-center inline-flex items-centertransition-colors">
             
-            <i class="uil uil-camera-plus text-3xl "aria-hidden="true"></i>
+            <i class="uil uil uil-video text-2xl "aria-hidden="true"></i>
             <span class="sr-only">Dodaj wideo</span>
         </button>
     </a>
 
     <a href="{{route('admin.create')}}" class="ml-2"><button type="button"
-            class="text-white bg-actionColor-300 hover:bg-actionColor-400 focus:ring-4 focus:outline-none focus:ring-white rounded-full  p-2.5 text-center inline-flex items-centertransition-colors">
+            class="text-white bg-actionColor-300 hover:bg-actionColor-400 focus:ring-4 focus:outline-none focus:ring-white rounded-full  px-2 py-1 text-center inline-flex items-centertransition-colors">
             
-            <i class="uil uil-plus text-3xl "aria-hidden="true"></i>
+            <i class="uil uil-plus text-2xl "aria-hidden="true"></i>
             <span class="sr-only">Dodaj post</span>
         </button>
     </a>

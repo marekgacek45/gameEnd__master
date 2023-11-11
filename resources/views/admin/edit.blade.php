@@ -45,10 +45,10 @@
 
                         </x-form.checkbox>
 
-                        <div class="flex gap-6">
-                            <x-form.fileInput name="thumbnail" namePl="miniaturka" type="file" />
+                        <div class="flex flex-col  mb-6">
+                            <x-form.fileInput name="thumbnail" namePl="miniaturka" type="file" /> 
                             <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="" width="150px"
-                                class="object-fill">
+                            class="object-fill">
 
                         </div>
 
