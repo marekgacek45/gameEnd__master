@@ -36,6 +36,15 @@ class PagesController extends Controller
 
         return view('pages.posts', ['posts' => $posts, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
     }
+    public function videos()
+    {
+
+        $videos = Post::with('category', 'tags')->orderByDesc('id')->get();
+
+
+
+        return view('pages.posts', ['videos' => $videos]);
+    }
     public function post(Post $post)
     {
         return (view('pages.post', ['post' => $post]));
@@ -56,5 +65,9 @@ class PagesController extends Controller
         $newestPost = $posts->first();
         $latestPosts = $posts->skip(1)->take(3)->all();
         return view('pages.posts', ['posts' => $posts, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
+    }
+
+    public function vue(){
+        return view('pages.vue');
     }
 }

@@ -1,0 +1,1 @@
+<button {{$attributes}} class="text-white bg-primaryColor-400 hover:bg-primaryColor-600 focus:ring-4 focus:outline-none focus:ring-actionColor-400 font-bold rounded-md text-sm px-6 py-3.5 text-center uppercase transition-colors">{{$slot}}</button>

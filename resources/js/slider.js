@@ -37,10 +37,15 @@ document.querySelector(".slider__btn--next").addEventListener("click", () => {
     plusSlides(1);
 });
 
-let dots = document.getElementsByClassName("dot");
+let dots = document.getElementsByClassName("slider__dots-item");
 for (let i = 0; i < dots.length; i++) {
     dots[i].addEventListener("click", () => {
-        currentSlide(i + 1);
+        for (let j = 0; j < dots.length; j++) {
+            if (dots[j] === dots[i]) {
+                currentSlide(j + 1);
+                break;
+            }
+        }
     });
 }
 

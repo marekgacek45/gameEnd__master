@@ -4,7 +4,7 @@
         {{-- LOGO-HEADING --}}
         <x-logoHeading />
         {{-- NAV-LINKS --}}
-        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+        <div class="hidden w-full lg:block lg:w-auto" id="navbar-dropdown">
             <x-nav.links />
         </div>
         <div class="flex justify-center items-center gap-2 p-3">
