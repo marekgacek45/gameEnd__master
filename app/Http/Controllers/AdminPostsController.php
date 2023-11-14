@@ -36,7 +36,8 @@ class AdminPostsController extends Controller
             'title' => 'required',
             'category_id' => ['required'],
             'thumbnail' => ['required', 'image'],
-            'content' => ['required']
+            'content' => ['required'],
+            't'
         ]);
 
 

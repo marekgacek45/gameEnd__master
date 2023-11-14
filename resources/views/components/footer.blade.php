@@ -13,7 +13,7 @@
         <div class="flex flex-col sm:flex-row justify-center items-center gap-1 mt-4 font-sans-serif">
             <span class="block text-sm text-white sm:text-center">© <span id="currentYearSpan"></span> <a href="https://gameend.pl/"
                 class="hover:underline">gamEend | </a></span> 
-                <span class="flex justify-center items-center gap-1 text-sm text-white sm:text-center">stworzone przez <a href="https:://gorskastrona.pl" class="flex justify-center items-center hover:underline">Górska Strona <img src="{{asset('assets/avatar_logo.png')}}" alt="logo Górskiej Strony - wykonawcy projektu" width="20px" class="ml-2 "></a></span>
+                <span class="flex justify-center items-center gap-1 text-sm text-white sm:text-center">stworzone przez <a href="https://gorskastrona.pl" target='_blank' class="flex justify-center items-center hover:underline">Górska Strona <img src="{{asset('assets/avatar_logo.png')}}" alt="logo Górskiej Strony - wykonawcy projektu" width="20px" class="ml-2 "></a></span>
         </div>
         
     </div>

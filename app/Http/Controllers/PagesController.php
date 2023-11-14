@@ -68,6 +68,12 @@ class PagesController extends Controller
     }
 
     public function vue(){
-        return view('pages.vue');
+
+        $posts = Post::with('category')->where('category_id', 1)->get();
+dd($posts);
+        $newestPost = $posts->first();
+        $latestPosts = $posts->skip(1)->take(3)->all();
+        return view('pages.vue', ['posts' => $posts, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
     }
-}
+    }
+

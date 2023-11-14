@@ -1,7 +1,7 @@
 @props(['posts'])
 
 <div class="overflow-hidden rounded-md border border-gray-200 shadow-md max-w-screen-xl mx-auto">
-    <table class="w-full border-collapse bg-primaryColor-400 text-left text-sm text-white">
+    <table class="w-full border-collapse text-left text-sm text-white">
         <thead class="bg-white">
             <tr>
                 <th scope="col" class="px-6 py-4 font-bold text-black">Nazwa Posta</th>
