@@ -46,7 +46,11 @@ class PagesController extends Controller
         return view('pages.posts', ['videos' => $videos]);
     }
     public function post(Post $post)
+
     {
+
+
+
         return (view('pages.post', ['post' => $post]));
     }
 
@@ -60,20 +64,24 @@ class PagesController extends Controller
     }
     public function tag(Tag $tag)
     {
-        $posts = Post::with('tags')->where('tag_id', $tag->id)->get();
+
+        $posts = Post::whereHas('tags', fn ($query) => $query->where('name', $tag->name))->with('tags')->get();
+
 
         $newestPost = $posts->first();
         $latestPosts = $posts->skip(1)->take(3)->all();
         return view('pages.posts', ['posts' => $posts, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
     }
 
-    public function vue(){
+    public function vue()
+    {
 
-        $posts = Post::with('category')->where('category_id', 1)->get();
-dd($posts);
+        $tagName = 'vue';
+
+        $posts = Post::whereHas('tags', fn ($query) => $query->where('name', $tagName))->with('tags')->get();
+
         $newestPost = $posts->first();
         $latestPosts = $posts->skip(1)->take(3)->all();
         return view('pages.vue', ['posts' => $posts, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
     }
-    }
-
+}

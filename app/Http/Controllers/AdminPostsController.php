@@ -37,7 +37,6 @@ class AdminPostsController extends Controller
             'category_id' => ['required'],
             'thumbnail' => ['required', 'image'],
             'content' => ['required'],
-            't'
         ]);
 
 
@@ -103,6 +102,8 @@ class AdminPostsController extends Controller
         }
 
         $post->update($attributes);
+
+        $post->tags()->attach(request()->input('tags'));
 
 
         return redirect(route('admin.index'))->with('success', 'Post został zmieniony');
