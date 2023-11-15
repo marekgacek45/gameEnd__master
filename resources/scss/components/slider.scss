@@ -9,18 +9,19 @@
         
         @include mixins.xl-devices {
 			 width: 1280px;
+			 
              margin-top:4.5em;
 		}
     }
     &__slide {
         display: none;
         @include mixins.large-devices {
-            height: 650px;
+            height: 550px;
        }
         &-img {
             width: 100%;
             height: 100%;
-            object-fit: fill;
+            object-fit: cover;
         }
     }
     &__btn {

@@ -27,7 +27,7 @@
 
 </head>
 
-<body class="bg-white text-black flex flex-col justify-between h-screen">
+<body class="bg-black text-white flex flex-col justify-between h-screen">
 
     <x-nav.navBar />
     {{ $slot }}

@@ -14,14 +14,14 @@ class PagesController extends Controller
     public function home()
     {
 
-        $posts = Post::with('category', 'tags')->orderByDesc('id')->get();
-        $videos = Video::with('category', 'tags')->orderByDesc('id')->get();
+        $posts = Post::with('category', 'tags')->orderByDesc('id')->take(4)->get();
+        $videos = Video::with('category', 'tags')->orderByDesc('id')->take(4)->get();
 
 
-        $newestPost = $posts->first();
-        $latestPosts = $posts->skip(1)->take(3)->all();
+        // $newestPost = $posts->first();
+        // $latestPosts = $posts->skip(1)->take(3)->all();
 
-        return view('pages.index', ['posts' => $posts, 'videos' => $videos, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
+        return view('pages.index', ['posts' => $posts, 'videos' => $videos,]);
     }
 
 

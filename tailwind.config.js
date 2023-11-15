@@ -68,7 +68,7 @@ export default {
             fontFamily: {
                 main: ["IBM Plex Sans", "sans-serif"],
                 content: ["Newsreader", "serif"],
-                siteTitle: ["Young Serif", "serif"],
+                pixel: ['Pixelify Sans', 'sans-serif'],
             },
         },
     },
