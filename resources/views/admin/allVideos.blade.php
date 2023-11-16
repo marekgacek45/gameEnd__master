@@ -1,4 +1,5 @@
+
+
 <x-layouts.admin>
-    <x-admin.videoTable :videos='$videos'/>     
-    
+    <x-admin.videosTable :videos='$videos'/>     
 </x-layouts.admin>

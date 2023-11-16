@@ -20,9 +20,8 @@
             </li>
 
 
-            <x-admin.sidebar.aside-item class="uil uil-desktop" name="Dashboard" href="{{ route('admin.index') }}" />
             <x-admin.sidebar.aside-item class="uil uil-edit" name="Posty" href="{{ route('admin.index') }}" />
-            <x-admin.sidebar.aside-item class="uil uil-video" name="Filmy" href="{{ route('admin.index') }}" />
+            <x-admin.sidebar.aside-item class="uil uil-video" name="Filmy" href="{{ route('admin.video.index') }}" />
             <x-admin.sidebar.aside-item class="uil uil-apps" name="Kategorie"
                 href="{{ route('admin.category.index') }}" />
             <x-admin.sidebar.aside-item class="uil uil-tag-alt" name="Tagi" href="{{ route('admin.tag.index') }}" />
@@ -30,7 +29,7 @@
         <ul class="space-y-2 font-medium ">
          <hr class="border-1 border-actionColor-400">
             <x-admin.sidebar.aside-item class="uil uil-user" name="Moje Konto" href="#" />
-            <x-admin.sidebar.aside-item class="uil uil-sign-out-alt" name="Wyloguj" href="#" />
+            <x-admin.sidebar.aside-item class="uil uil-sign-out-alt" name="Wyloguj" href="{{route('profile.destroy')}}}}" />
         </ul>
     </div>
 </aside>

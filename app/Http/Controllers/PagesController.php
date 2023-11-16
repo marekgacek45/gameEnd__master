@@ -17,10 +17,6 @@ class PagesController extends Controller
         $posts = Post::with('category', 'tags')->orderByDesc('id')->take(4)->get();
         $videos = Video::with('category', 'tags')->orderByDesc('id')->take(4)->get();
 
-
-        // $newestPost = $posts->first();
-        // $latestPosts = $posts->skip(1)->take(3)->all();
-
         return view('pages.index', ['posts' => $posts, 'videos' => $videos,]);
     }
 
@@ -30,7 +26,6 @@ class PagesController extends Controller
 
         $posts = Post::with('category', 'tags')->orderByDesc('id')->get();
 
-
         $newestPost = $posts->first();
         $latestPosts = $posts->skip(1)->take(3)->all();
 
@@ -39,11 +34,11 @@ class PagesController extends Controller
     public function videos()
     {
 
-        $videos = Post::with('category', 'tags')->orderByDesc('id')->get();
+        $videos = Video::with('category', 'tags')->orderByDesc('id')->get();
 
 
 
-        return view('pages.posts', ['videos' => $videos]);
+        return view('pages.videos', ['videos' => $videos]);
     }
     public function post(Post $post)
 

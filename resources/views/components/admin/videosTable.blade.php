@@ -1,4 +1,4 @@
-@props(['posts'])
+@props(['videos'])
 
 <div class="overflow-hidden rounded-md border border-gray-200 shadow-md max-w-screen-xl mx-auto">
     <table class="w-full border-collapse text-left text-sm text-white">
@@ -14,20 +14,20 @@
         <tbody class="divide-y divide-gray-100 border-t border-gray-100 ">
 
 
-            @foreach ($posts as $post)
+            @foreach ($videos as $video)
                 <tr class="hover:bg-primaryColor-200 transition-all">
                     <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                         <div class="flex flex-row justify-center items-center gap-3">
-                            <a href="{{ route('admin.show', $post->slug) }}" target="_blank"
+                            <a href="{{ $video->link }}" target="_blank"
                                 class="flex justify-center items-center gap-4">
                                 <div class="relative h-10 w-10">
                                     <img class="h-full w-full rounded-full object-cover object-center"
-                                        src="{{ asset('storage/' . $post->thumbnail) }}"
-                                        alt="miniaturka posta o tytule {{ $post->title }}" />
+                                        src="{{ asset('storage/' . $video->thumbnail) }}"
+                                        alt="miniaturka posta o tytule {{ $video->title }}" />
 
                                 </div>
 
-                                <h3 class="font-semibold text-white">{{ $post->title }}</h3>
+                                <h3 class="font-semibold text-white">{{ $video->title }}</h3>
                             </a>
 
                             
@@ -35,12 +35,12 @@
 </div>
 </th>
 <td class="px-6 py-4">
-    <span>{{ $post->created_at->diffForHumans() }}</span>
+    <span>{{ $video->created_at->diffForHumans() }}</span>
 </td>
-<td class="px-6 py-4 font-semibold">{{ $post->category->name }}</td>
+<td class="px-6 py-4 font-semibold">{{ $video->category->name }}</td>
 <td class="px-6 py-4">
     <div class="flex gap-2">
-        @foreach ($post->tags as $tag)
+        @foreach ($video->tags as $tag)
             <span
                 class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-xs font-semibold text-violet-600">{{ $tag->name }}
             </span>
@@ -66,7 +66,7 @@
                     <button type="button"
                         class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                         data-modal-hide="popup-modal">
-                        <svg class="w-3 h-3 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
@@ -83,7 +83,7 @@
                             ten post?</h3>
                         <div class="flex justify-center items-center">
 
-                            <form action="{{ route('admin.destroy', $post->slug) }}" method="POST">
+                            <form action="{{ route('admin.destroy', $video->slug) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button data-modal-hide="popup-modal" type="sumbit"
@@ -99,9 +99,9 @@
             </div>
         </div>
 
-        <a x-data="{ tooltip: 'Edite' }" href="{{ route('admin.edit', $post->slug) }}">
+        <a x-data="{ tooltip: 'Edite' }" href="{{ route('admin.edit', $video->slug) }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="h-6 w-6 hover:scale-125 transition-transform" x-tooltip="tooltip">
+                stroke="currentColor" class="h-6 w-6 hover:scale-110 transition-transform" x-tooltip="tooltip">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
             </svg>
@@ -118,7 +118,7 @@
 </div>
 
 
-{{ $posts->links() }}
+{{ $videos->links() }}
 
 
 <div class="absolute bottom-5 right-5 ">

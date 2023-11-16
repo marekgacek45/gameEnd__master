@@ -14,7 +14,8 @@ class AdminVideoController extends Controller
     public function index()
     
     {
-        $videos = Video::all();
+        $videos = Video::with('category', 'tags')->orderByDesc('id')->paginate(10);
+        
 
         return view('admin.allVideos', ['videos' => $videos]);
     }
