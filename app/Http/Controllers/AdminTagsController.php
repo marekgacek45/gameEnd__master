@@ -35,30 +35,31 @@ class AdminTagsController extends Controller
         return redirect(route('admin.tag.index'))->with('success', 'Post został dodany');
     }
 
-    public function update(Tag $tag){
+    public function update(Tag $tag)
+    {
 
         // dd(request());
-                $attributes = request()->validate([
-                    'name' => 'required',
-                    'category_id' => 'required',
-                    
-                ]);
-                
-        
-                $tag->update($attributes);
-        
-        
-                return redirect(route('admin.tag.index'))->with('success', 'Kategoria została zaktualizowana');
-        
-            }
-            public function destroy(Tag $tag)
-            {
-                
-                
-            
-               
-                $tag->delete();
-            
-                return back()->with('success', 'Tag została usunięta, a tagi mają teraz kategorię NULL');
-            }
+        $attributes = request()->validate([
+            'name' => 'required',
+            'category_id' => 'required',
+
+        ]);
+
+
+        $tag->update($attributes);
+
+
+        return redirect(route('admin.tag.index'))->with('success', 'Kategoria została zaktualizowana');
+    }
+    public function destroy(Tag $tag)
+    {
+
+
+
+        $tag->posts()->detach();
+
+        // Usuń sam tag
+        $tag->delete();
+        return back()->with('success', 'Tag została usunięta, a tagi mają teraz kategorię NULL');
+    }
 }

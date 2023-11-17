@@ -37,7 +37,11 @@
 <td class="px-6 py-4">
     <span>{{ $post->created_at->diffForHumans() }}</span>
 </td>
-<td class="px-6 py-4 font-semibold">{{ $post->category->name }}</td>
+
+<td class="px-6 py-4 font-semibold">
+    @if(isset($post->category->name) && !empty($post->category->name))
+    {{ $post->category->name }}</td>
+    @endif
 <td class="px-6 py-4">
     <div class="flex gap-2">
         @foreach ($post->tags as $tag)

@@ -19,10 +19,12 @@
             <div class="mb-5 flex flex-col justify-center items-center text-center gap-4">
                 <h2 class="font-bold text-2xl md:text-4xl mb-5">{{ $post->title }}</h2>
 
-
+                @if(isset($post->category->name) && !empty($post->category->name))
                 <a href="{{ route('posts.category.index', $post->category->name) }}">
-                    <h3 class="font-bold ">{{ $post->category->name }}</h3>
+                    <h3 class="font-bold">{{ $post->category->name }}</h3>
                 </a>
+            @endif
+
                 <div class="flex justify-center items-center gap-2">
 
                     @foreach ($post->tags as $tag)

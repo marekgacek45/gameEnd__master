@@ -68,15 +68,5 @@ class PagesController extends Controller
         return view('pages.posts', ['posts' => $posts, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
     }
 
-    public function vue()
-    {
-
-        $tagName = 'vue';
-
-        $posts = Post::whereHas('tags', fn ($query) => $query->where('name', $tagName))->with('tags')->get();
-
-        $newestPost = $posts->first();
-        $latestPosts = $posts->skip(1)->take(3)->all();
-        return view('pages.vue', ['posts' => $posts, 'newestPost' => $newestPost, 'latestPosts' => $latestPosts]);
-    }
+    
 }

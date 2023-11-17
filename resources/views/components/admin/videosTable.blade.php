@@ -37,7 +37,10 @@
 <td class="px-6 py-4">
     <span>{{ $video->created_at->diffForHumans() }}</span>
 </td>
-<td class="px-6 py-4 font-semibold">{{ $video->category->name }}</td>
+<td class="px-6 py-4 font-semibold">
+    @if(isset($video->category->name) && !empty($video->category->name))
+    {{ $video->category->name }}</td>
+    @endif
 <td class="px-6 py-4">
     <div class="flex gap-2">
         @foreach ($video->tags as $tag)
