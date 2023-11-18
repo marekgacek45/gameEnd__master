@@ -13,10 +13,8 @@
                 </thead>
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100 ">
 
-
                     @foreach ($categories as $category)
                         <tr class="hover:bg-primaryColor-200 transition-all">
-
 
                             <td class="px-6 py-4">
                                 <span>{{ $category->id }}</span>
@@ -28,8 +26,8 @@
                             <td class="px-6 py-4">
                                 <div class="flex justify-end gap-4">
 
-                                    <button data-modal-target="deleteCategory" data-modal-toggle="deleteCategory"
-                                        type="button">
+                                    <button data-modal-target="deleteCategory{{ $category->id }}"
+                                        data-modal-toggle="deleteCategory{{ $category->id }}" type="button">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor"
                                             class="h-6 w-6 hover:scale-110 transition-transform" x-tooltip="tooltip">
@@ -38,22 +36,27 @@
                                         </svg>
                                     </button>
 
-                                    <x-admin.modals.delete id="deleteCategory"
+
+                                    <x-admin.modals.delete id="deleteCategory{{ $category->id }}"
                                         formAction="{{ route('admin.category.destroy', $category->id) }}">Czy na pewno
                                         chcesz usunąć tę kategorię?</x-admin.modals.delete>
-
-                                    <button data-modal-target="update_category_modal" data-modal-toggle="update_category_modal"
                                         
-                                        type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor" class="h-6 w-6 hover:scale-125 transition-transform" x-tooltip="tooltip">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
-                                    </svg>
+
+                                    <button data-modal-target="updateCategoryModal{{ $category->id }}"
+                                        data-modal-toggle="updateCategoryModal{{ $category->id }}" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor"
+                                            class="h-6 w-6 hover:scale-125 transition-transform" x-tooltip="tooltip">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                                        </svg>
                                     </button>
-                                    <x-admin.modal id='update_category_modal' title='Edytuj Kategorię' formId='updateCategory'>
+
+
+                                    <x-admin.modal id="updateCategoryModal{{ $category->id }}" title="Edytuj Kategorię"
+                                        formId="updateCategory{{ $category->id }}">
                                         <form action="{{ route('admin.category.update', $category->id) }}" method="post"
-                                            id="updateCategory" >
+                                            id="updateCategory{{ $category->id }}">
                                             @csrf
                                             @method('patch')
                                             <x-form.input name="name" namePl="Nazwa Kategori"
@@ -61,35 +64,30 @@
                                                 value="{{ $category->name }}" />
                                         </form>
                                     </x-admin.modal>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
-
-
                 </tbody>
             </table>
-
         </div>
-
-
-        {{-- {{ $categories->links() }} --}}
 
         {{-- ADD CATEGORIES --}}
         <div class="absolute bottom-5 right-5 ">
-            <button data-modal-target="add-category-modal" data-modal-toggle="add-category-modal" type="button"
+            <button data-modal-target="addCategoryModal" data-modal-toggle="addCategoryModal" type="button"
                 class="text-white bg-actionColor-300 hover:bg-actionColor-400 focus:ring-4 focus:outline-none focus:ring-white rounded-full  px-2 py-1 text-center inline-flex items-centertransition-colors">
 
                 <i class="uil uil-plus text-2xl "aria-hidden="true"></i>
-                <span class="sr-only">Dodaj post</span>
+                <span class="sr-only">Dodaj kategorię</span>
             </button>
 
-            <x-admin.modal id='add-category-modal' title='Dodaj Kategorię' formId='addCategory'>
-                <form action="{{ route('admin.category.store') }}" method="post" id="addCategory">
+            <x-admin.modal id="addCategoryModal" title="Dodaj Kategorię" formId="addCategoryForm">
+                <form action="{{ route('admin.category.store') }}" method="post" id="addCategoryForm">
                     @csrf
                     <x-form.input name="name" namePl="Nazwa Kategori" class=" w-full xl:w-3/4 "
                         placeholder="Wprowadź tytuł" />
                 </form>
             </x-admin.modal>
-
         </div>
+    </div>
 </x-layouts.admin>

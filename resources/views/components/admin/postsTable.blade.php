@@ -8,7 +8,7 @@
                 <th scope="col" class="px-6 py-4 font-bold text-black">Publikacja</th>
                 <th scope="col" class="px-6 py-4 font-bold text-black">Kategoria</th>
                 <th scope="col" class="px-6 py-4 font-bold text-black">Tagi</th>
-                <th scope="col" class="px-6 py-4 font-bold text-black">Edycja</th>
+                <th scope="col" class="px-6 py-4 font-bold text-black text-end pr-10">Edycja</th>
             </tr>
         </thead>
         <tbody class="divide-y divide-gray-100 border-t border-gray-100 ">

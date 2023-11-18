@@ -14,29 +14,31 @@
                 </thead>
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100 ">
 
-
                     @foreach ($tags as $tag)
-
-             
                         <tr class="hover:bg-primaryColor-200 transition-all">
-
-
                             <td class="px-6 py-4">
                                 <span>{{ $tag->id }}</span>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('posts.category.index', $tag->name) }}" target='_blank'>
+                                <a href="{{ route('posts.tag.index', $tag->name) }}" target='_blank'>
                                     <span>{{ ucfirst($tag->name) }}</span></a>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('posts.category.index', $tag->name) }}" target='_blank'>
-                                    <span>{{ ucfirst($tag->category_id) }}</span></a>
+                                @foreach ($categories as $category)
+                                @if ($tag->category_id === $category->id)
+                                <span>
+                                    <a href="{{ route('posts.category.index', $category->name) }}" target='_blank'>
+                                                {{ ucfirst($category->name) }}
+                                            </span>
+                                        </a>
+                                        @endif
+                                        @endforeach
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-end gap-4">
 
-                                    <button data-modal-target="delete_tag" data-modal-toggle="delete_tag"
-                                        type="button">
+                                    <button data-modal-target="deleteTag{{ $tag->id }}"
+                                        data-modal-toggle="deleteTag{{ $tag->id }}" type="button">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor"
                                             class="h-6 w-6 hover:scale-110 transition-transform" x-tooltip="tooltip">
@@ -45,63 +47,69 @@
                                         </svg>
                                     </button>
 
-                                    <x-admin.modals.delete id="delete_tag"
+
+                                    <x-admin.modals.delete id="deleteTag{{ $tag->id }}"
                                         formAction="{{ route('admin.tag.destroy', $tag->id) }}">Czy na pewno
                                         chcesz usunąć ten tag?</x-admin.modals.delete>
 
-                                    <button data-modal-target="update_tag_modal" data-modal-toggle="update_tag_modal"
-                                        
-                                        type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor" class="h-6 w-6 hover:scale-125 transition-transform" x-tooltip="tooltip">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
-                                    </svg>
+
+                                    <button data-modal-target="updateTagModal{{ $tag->id }}"
+                                        data-modal-toggle="updateTagModal{{ $tag->id }}" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor"
+                                            class="h-6 w-6 hover:scale-125 transition-transform" x-tooltip="tooltip">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                                        </svg>
                                     </button>
-                                    <x-admin.modal id='update_tag_modal' title='Edytuj Tag' formId='update_tag'>
+                                    <x-admin.modal id="updateTagModal{{ $tag->id }}" title="Edytuj Tag"
+                                        formId="updateTag{{ $tag->id }}">
                                         <form action="{{ route('admin.tag.update', $tag->id) }}" method="post"
-                                            id="update_tag" >
+                                            id="updateTag{{ $tag->id }}">
                                             @csrf
                                             @method('patch')
-                                            <x-form.input name="name" namePl="Nazwa Tagu"
-                                                class=" w-full xl:w-3/4 " placeholder="Wprowadź tytuł"
-                                                value="{{ $tag->name }}" />
+                                            <x-form.input name="name" namePl="Nazwa Tagu" class=" w-full xl:w-3/4 "
+                                                placeholder="Wprowadź tytuł" value="{{ $tag->name }}" />
+                                            <x-form.select name="category_id" namePl="kategoria">
+                                                @foreach ($categories as $category)
+                                                    <option class="text-lg" value="{{ $category->id }}"
+                                                        @if ($category->id == $tag->category_id) selected @endif>
+                                                        {{ ucwords($category->name) }}
+                                                    </option>
+                                                @endforeach
+                                            </x-form.select>
                                         </form>
                                     </x-admin.modal>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
-
-
                 </tbody>
             </table>
-
         </div>
-
-
-        {{-- {{ $tags->links() }} --}}
 
         {{-- ADD Tags --}}
         <div class="absolute bottom-5 right-5 ">
-            <button data-modal-target="add_tag_modal" data-modal-toggle="add_tag_modal" type="button"
+            <button data-modal-target="addTagModal" data-modal-toggle="addTagModal" type="button"
                 class="text-white bg-actionColor-300 hover:bg-actionColor-400 focus:ring-4 focus:outline-none focus:ring-white rounded-full  px-2 py-1 text-center inline-flex items-centertransition-colors">
 
                 <i class="uil uil-plus text-2xl "aria-hidden="true"></i>
                 <span class="sr-only">Dodaj Tag</span>
             </button>
 
-            <x-admin.modal id='add_tag_modal' title='Dodaj Tag' formId='add_tag'>
-                <form action="{{ route('admin.tag.store') }}" method="post" id="add_tag">
+            <x-admin.modal id="addTagModal" title="Dodaj Tag" formId="addTagForm">
+                <form action="{{ route('admin.tag.store') }}" method="post" id="addTagForm">
                     @csrf
                     <x-form.input name="name" namePl="Nazwa Kategori" class=" w-full xl:w-3/4 "
                         placeholder="Wprowadź tytuł" />
-                        <x-form.select name="category_id" namePl="kategoria">
-                            @foreach ($categories as $category)
-                                <option class="text-lg " value="{{ $category->id }}">{{ucwords($category->name)}}</option>
-                            @endforeach
-                        </x-form.select>    
+                    <x-form.select name="category_id" namePl="kategoria">
+                        @foreach ($categories as $category)
+                            <option class="text-lg " value="{{ $category->id }}">{{ ucwords($category->name) }}
+                            </option>
+                        @endforeach
+                    </x-form.select>
                 </form>
             </x-admin.modal>
-
         </div>
+    </div>
 </x-layouts.admin>

@@ -32,7 +32,6 @@ class AdminCategoryController extends Controller
     public function update(Category $category)
     {
 
-        // dd(request());
         $attributes = request()->validate([
             'name' => 'required',
 
@@ -46,6 +45,7 @@ class AdminCategoryController extends Controller
     }
     public function destroy(Category $category)
     {
+
 
         $tags = $category->tags;
 

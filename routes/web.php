@@ -82,4 +82,4 @@ Route::delete('/admin/kategorie/{category:id}', [AdminCategoryController::class,
 Route::get('/admin/tagi', [AdminTagsController::class, 'index'])->name('admin.tag.index');
 Route::post('/admin/tagi/stwórz', [AdminTagsController::class, 'store'])->name('admin.tag.store');
 Route::patch('/admin/tag/{tag:id}', [AdminTagsController::class, 'update'])->name('admin.tag.update');
-Route::delete('/admin/tag/{category:id}', [AdminTagsController::class, 'destroy'])->name('admin.tag.destroy');
+Route::delete('/admin/tag/{tag:id}', [AdminTagsController::class, 'destroy'])->name('admin.tag.destroy');

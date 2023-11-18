@@ -38,11 +38,9 @@ class AdminTagsController extends Controller
     public function update(Tag $tag)
     {
 
-        // dd(request());
         $attributes = request()->validate([
             'name' => 'required',
             'category_id' => 'required',
-
         ]);
 
 
@@ -53,13 +51,11 @@ class AdminTagsController extends Controller
     }
     public function destroy(Tag $tag)
     {
-
-
-
         $tag->posts()->detach();
-
-        // Usuń sam tag
         $tag->delete();
+
+
+        
         return back()->with('success', 'Tag została usunięta, a tagi mają teraz kategorię NULL');
     }
 }
